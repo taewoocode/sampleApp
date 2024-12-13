@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593533562995",
+    "project_id": "mysampleproject-12b24",
+    "storage_bucket": "mysampleproject-12b24.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593533562995:android:8e6a20bab22a49b1f73a06",
+        "android_client_info": {
+          "package_name": "com.taewoo.mysampleapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA92vqejzaNZQqcth1yWDCL_YEqxrFwMr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
