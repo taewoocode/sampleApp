@@ -2,6 +2,7 @@ package com.taewoo.mysampleapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -78,20 +79,23 @@ class MainActivity : AppCompatActivity() {
             )
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        val user = auth.currentUser
 
-                        // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+                        if (user != null) {
+                            Log.d("LoginSuccess", "User logged in: $user.uid")
 
-                        // 로그인 성공시 보드 리스트 액티비티로 이동
-                        val intent = Intent(this, BoardListActivity::class.java)
-                        startActivity(intent)
-
-
-
-
+                            // 로그인 성공 후 화면 전환
+                            val intent = Intent(this, BoardListActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Log.e("LoginError", "User is null after successful login.")
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        // If sign in fails, display a message to the user.
+                        // 로그인 실패시 에러 로그 찍기
+                        Log.e("LoginError", "Login failed: ${task.exception?.message}")
                         Toast.makeText(this,"false", Toast.LENGTH_SHORT).show()
                     }
                 }
