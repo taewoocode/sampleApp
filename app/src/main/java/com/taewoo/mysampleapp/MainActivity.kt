@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Toast는 메시지를 띄워주는 객체
+        //현재 UI 정보를 받아온다.
         Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // 값들을 받는 법 첫번 째 방법
@@ -49,6 +51,38 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this,"ok", Toast.LENGTH_SHORT ).show()
                     } else {
                         Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+
+        // logoutBtn을 클릭하면 어떻게 할건가?
+        binding.logoutBtn.setOnClickListener {
+
+            // 로그아웃
+            auth.signOut()
+
+            // 현재 UID 정보를 받아온다.
+            Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+        // loginBtn을 클릭하면 어떻게 할건가?
+        binding.loginBtn.setOnClickListener {
+
+            val email = binding.emailArea
+            val pwd = binding.pwdArea
+
+            auth.createUserWithEmailAndPassword(
+                email.text.toString(),
+                pwd.text.toString()
+            )
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(this,"false", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
