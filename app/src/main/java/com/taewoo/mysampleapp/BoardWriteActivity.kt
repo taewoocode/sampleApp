@@ -18,6 +18,8 @@ class BoardWriteActivity : AppCompatActivity() {
             val database = Firebase.database
             val myRef = database.getReference("message")
             myRef.setValue("Hello, World!")
+
+            // git 감시확인
         }
     }
 }
