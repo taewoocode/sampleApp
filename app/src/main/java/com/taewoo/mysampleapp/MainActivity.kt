@@ -1,5 +1,6 @@
 package com.taewoo.mysampleapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -77,9 +78,18 @@ class MainActivity : AppCompatActivity() {
             )
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+
                         // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(this,"ok", Toast.LENGTH_SHORT).show()
                         Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
+
+                        // 로그인 성공시 보드 리스트 액티비티로 이동
+                        val intent = Intent(this, BoardListActivity::class.java)
+                        startActivity(intent)
+
+
+
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(this,"false", Toast.LENGTH_SHORT).show()
