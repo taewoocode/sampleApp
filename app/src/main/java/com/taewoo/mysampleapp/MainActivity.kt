@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         // 레이아웃 문자열, 이미지, 스타일 등 다양한 리소스를 코드에서 접근할 때 사용한다.
         // res/layout/activity_main.xml 파일을 참조한다.
         setContentView(R.layout.activity_main)
+
+        // Toast는 메시지를 띄워주는 객체
+        Toast.makeText(this, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // 값들을 받는 법 첫번 째 방법
