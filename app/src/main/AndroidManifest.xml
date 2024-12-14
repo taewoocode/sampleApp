@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MySampleApp"
         tools:targetApi="31">
         <activity
-            android:name=".BoardWirteActivity"
+            android:name=".BoardWriteActivity"
             android:exported="false" />
         <activity
             android:name=".BoardListActivity"

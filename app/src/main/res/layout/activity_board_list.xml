@@ -7,4 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".BoardListActivity">
 
+    <Button
+        android:id="@+id/writeBtn"
+        android:layout_width="98dp"
+        android:layout_height="67dp"
+        android:text="글쓰기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
