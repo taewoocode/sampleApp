@@ -20,6 +20,8 @@ class BoardWriteActivity : AppCompatActivity() {
 
             // Write a message to the database
             val database = Firebase.database
+
+            // Ref는 데이터베이스가 저장되는 경로
             val myRef = database.getReference("board")
 
             // key - value 형태로 저장
