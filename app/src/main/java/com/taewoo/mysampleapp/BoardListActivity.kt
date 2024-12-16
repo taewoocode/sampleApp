@@ -21,6 +21,7 @@ class BoardListActivity : AppCompatActivity() {
      *
      */
      lateinit var LVAdapter : ListViewAdapter
+     val list = mutableListOf<Model>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,24 +36,13 @@ class BoardListActivity : AppCompatActivity() {
             val intent = Intent(this, BoardWriteActivity::class.java)
             startActivity(intent)
         }
-
-        /** LVAdapter 연결 **/
-        val list = mutableListOf<Model>()
-        list.add(Model("a"))
-        list.add(Model("b"))
-        list.add(Model("c"))
-        LVAdapter = ListViewAdapter(list)
-        val lv = findViewById<ListView>(R.id.lv)
-        lv.adapter = LVAdapter
-
         getData()
-
     }
 
     fun getData() {
 
         val database = Firebase.database
-        val myRef = database.getReference("board")
+         val myRef = database.getReference("board")
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -62,8 +52,14 @@ class BoardListActivity : AppCompatActivity() {
                     /** item **/
                     val item = dataModel.getValue(Model::class.java)
                     Log.d("BoardListActivity", item.toString())
+
+                    /** Firebase에서 받아온 데이터 추가 **/
+                    list.add(item!!)
                 }
+                /** 데이터 동기화 **/
+                LVAdapter.notifyDataSetChanged()
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message
                 Log.w("BoardListActivity", "loadPost:onCancelled", databaseError.toException())
