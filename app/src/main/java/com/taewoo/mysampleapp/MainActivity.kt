@@ -15,6 +15,8 @@ import com.taewoo.mysampleapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+
+
     // 바인딩을 위해 변수 선언
     private lateinit var binding : ActivityMainBinding
 
